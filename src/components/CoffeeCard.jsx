@@ -37,7 +37,7 @@ const CoffeeCard = ({ coffee }) => {
     <div className="card  card-side bg-base-100 shadow-xl">
       <figure>
         <img
-          className="py-8"
+          className="py-8 ml-14"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT30npsv3aKpszjVYJ4pPpbQq6JVKqvXZKceA&usqp=CAU"
           alt="Movie"
         />
@@ -52,7 +52,7 @@ const CoffeeCard = ({ coffee }) => {
         <div className="card-actions justify-end">
           <div className="btn-group btn-group-vertical space-y-2">
             <button className="btn">View</button>
-            <Link to={`/updateCoffee/:${_id}`}>
+            <Link to={`/updateCoffee/${_id}`}>
               <button className="btn">Edit</button>
             </Link>
             <button
