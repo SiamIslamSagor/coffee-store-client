@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 const UpdateCoffee = () => {
   const coffee = useLoaderData();
-  const { _id, name, quantity, supplier, taste, category, details, photo } =
+  const { _id, name, quantity, supplier, test, category, details, photo } =
     coffee;
 
   const handleUpdateCoffee = e => {
@@ -108,7 +108,7 @@ const UpdateCoffee = () => {
             </label>
             <label className="input-group">
               <input
-                defaultValue={taste}
+                defaultValue={test}
                 name="test"
                 type="text"
                 placeholder="Test"
