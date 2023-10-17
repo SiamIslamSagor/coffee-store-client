@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { createUser } = useContext(AuthContext);
@@ -13,7 +14,32 @@ const SignUp = () => {
 
     // create user:::
     createUser(email, password)
-      .then(result => console.log(result.user))
+      .then(result => {
+        console.log(result.user);
+        // new user created successfully
+        const createdAt = result.user?.metadata?.creationTime;
+        const user = { email, createdAt: createdAt };
+        fetch("http://localhost:5000/user", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+
+            if (data.insertedId) {
+              Swal.fire({
+                title: "Success!",
+                text: "User Created successfully",
+                icon: "success",
+                confirmButtonText: "OKey.",
+              });
+            }
+          });
+      })
       .catch(error => {
         console.log(error);
       });
