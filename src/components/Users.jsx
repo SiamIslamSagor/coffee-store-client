@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 const Users = () => {
   const loadedUsers = useLoaderData();
   const [users, setUsers] = useState(loadedUsers);
+  console.log(users);
 
   const handleDelete = id => {
     Swal.fire({
@@ -46,6 +47,7 @@ const Users = () => {
               <th>Email</th>
               <th>Created At</th>
               <th>Action</th>
+              <th>Last Log In</th>
             </tr>
           </thead>
           <tbody>
@@ -63,6 +65,7 @@ const Users = () => {
                     X
                   </button>
                 </td>
+                <td>{user.lastLoggedAt ? user.lastLoggedAt : "N/A"}</td>
               </tr>
             ))}
           </tbody>
